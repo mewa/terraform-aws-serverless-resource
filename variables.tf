@@ -18,6 +18,11 @@ variable "methods" {
   description = "List of resource methods"
 }
 
+variable "num_methods" {
+  type = "string"
+  description = "Number of methods"
+}
+
 variable "origin" {
   type = "string"
   description = "Allowed CORS origin"
