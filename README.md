@@ -10,7 +10,7 @@ It creates resources and sets up HTTP methods to invoke supplied Lambdas.
 # /test
 module "test" {
   source = "mewa/serverless-resource/aws"
-  version = "1.0.1"
+  version = "1.1.0"
 
   api = "${aws_api_gateway_rest_api.test_api.id}"
   root_resource = "${aws_api_gateway_rest_api.test_api.root_resource_id}"
@@ -22,6 +22,7 @@ module "test" {
   methods = [
     {
       method = "PUT"
+      type = "AWS", # Optionally override lambda integration type, defaults to "AWS_PROXY"
       invoke_arn = "${aws_lambda_function.test_put_lambda.invoke_arn}"
     },
     {
