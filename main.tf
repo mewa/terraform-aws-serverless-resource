@@ -33,6 +33,20 @@ resource "aws_api_gateway_method_response" "method_response" {
   }
 }
 
+resource "aws_api_gateway_integration_response" "integration_response" {
+  depends_on = [
+    "aws_api_gateway_method_response.method_response"
+  ]
+
+  rest_api_id = "${var.api}"
+  resource_id = "${aws_api_gateway_resource.resource.id}"
+
+  count = "${var.num_methods}"
+  http_method = "${lookup(var.methods[count.index], "method")}"
+
+  status_code = "200"
+}
+
 # resource lambdas
 resource "aws_api_gateway_integration" "resource_lambda_integration" {
   depends_on = [
