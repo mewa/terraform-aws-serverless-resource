@@ -10,7 +10,7 @@ It creates resources and sets up HTTP methods to invoke supplied Lambdas.
 # /test
 module "test" {
   source = "mewa/serverless-resource/aws"
-  version = "1.1.0"
+  version = "1.1.1"
 
   api = "${aws_api_gateway_rest_api.test_api.id}"
   root_resource = "${aws_api_gateway_rest_api.test_api.root_resource_id}"
