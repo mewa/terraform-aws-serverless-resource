@@ -11,6 +11,8 @@ resource "aws_api_gateway_method" "method" {
   resource_id = "${aws_api_gateway_resource.resource.id}"
   authorization = "NONE"
 
+  api_key_required = "${var.api_key_required}"
+
   count = "${var.num_methods}"
   http_method = "${lookup(var.methods[count.index], "method")}"
 }

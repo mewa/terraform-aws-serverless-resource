@@ -13,6 +13,10 @@ variable "resource" {
   description = "Resource name"
 }
 
+variable "api_key_required" {
+  default = "false"
+}
+
 variable "methods" {
   type = "list"
   description = "List of resource methods"
