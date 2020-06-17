@@ -1,15 +1,15 @@
 variable "api" {
-  type = "string"
+  type        = string
   description = "REST API id"
 }
 
 variable "root_resource" {
-  type = "string"
+  type        = string
   description = "Root resource id of supplied REST API"
 }
 
 variable "resource" {
-  type = "string"
+  type        = string
   description = "Resource name"
 }
 
@@ -18,17 +18,12 @@ variable "api_key_required" {
 }
 
 variable "methods" {
-  type = "list"
+  type        = set(object({method = string, type = string, invoke_arn = string}))
   description = "List of resource methods"
 }
 
-variable "num_methods" {
-  type = "string"
-  description = "Number of methods"
-}
-
 variable "origin" {
-  type = "string"
+  type        = string
   description = "Allowed CORS origin"
-  default = "*"
+  default     = "*"
 }
