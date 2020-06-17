@@ -30,7 +30,7 @@ resource "aws_api_gateway_method_response" "method_response" {
 
   status_code = "200"
 
-  response_parameters {
+  response_parameters = {
     "method.response.header.Access-Control-Allow-Origin" = true
   }
 }
@@ -70,7 +70,7 @@ data "template_file" "method" {
   count = "${var.num_methods}"
   template = "$${method}"
 
-  vars {
+  vars = {
     method = "${lookup(var.methods[count.index], "method")}"
   }
 }
